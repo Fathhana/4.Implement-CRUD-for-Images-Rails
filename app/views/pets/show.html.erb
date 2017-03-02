@@ -1,0 +1,29 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Name:</strong>
+  <%= @pet.name %>
+</p>
+
+<p>
+  <strong>Description:</strong>
+  <%= @pet.description %>
+</p>
+
+<p>
+  <strong>Image Path:</strong>
+  <%= @pet.image %>
+</p>
+
+<p>
+  <strong>Image Thumbnail:</strong>
+  <%= image_tag @pet.image.thumb.url %>
+</p>
+
+<p>
+  <strong>Image:</strong>
+  <%= image_tag @pet.image.url %>
+</p>
+
+<%= link_to 'Edit', edit_pet_path(@pet) %> |
+<%= link_to 'Exit', '_self', :onclick=>'window.close();'%>

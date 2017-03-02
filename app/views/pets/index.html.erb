@@ -1,0 +1,42 @@
+<p id="notice"><%= notice %></p>
+
+<br>
+<div class="main-posts">
+    <div class="container">
+        <h1 style="color:#2F4F4F">Listing</h1>
+        <div class="row">
+            <div class="blog-masonry masonry-true">
+              <div class="container">
+                <% @pets.each do |pet| %>
+                  <div class="post-masonry col-md-4 col-sm-6">
+                    <div class="post-thumb">
+                        <img src="<%= pet.image %>" alt="">
+                        <div class="title-over">
+                            <h4><a href="#"><%= pet.name %></a></h4>
+                        </div>
+                        <div class="post-hover text-center">
+                            <div class="inside">
+                                <span class="date"><%= pet.created_at.strftime("%A %d %B %Y") %></span>
+                                <h4><a href="#"><%= pet.name %></a></h4>
+                                <p><%= pet.description %></p>
+                                <br>
+                                  <%= link_to 'Show', pet , target: :_blank, :class => "btn btn-success" %>
+                                  <%= link_to 'Edit', edit_pet_path(pet), target: :_blank, :class => "btn btn-primary" %>
+                                  <%= link_to 'Delete', pet, method: :delete, data: { confirm: 'Are you sure?' }, :class => "btn btn-danger" %>
+                            </div>
+                        </div>
+                    </div>
+                  </div> <!-- /.post-masonry -->
+
+                <% end %>
+              </div>
+            </div>
+            <%= link_to 'New Item', new_pet_path, :class => "btn btn-warning", target: :_blank %>
+            <p>&nbsp;</p>
+            <div class="col-md-12 text-center bg-warning">
+                <%= paginate @pets %>
+            </div>
+        </div>
+    </div>
+</div>
+
